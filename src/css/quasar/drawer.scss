@@ -1,0 +1,19 @@
+.q-drawer {
+  background-color: transparent;
+  border-right: 1px solid #3eb4f8;
+  top: 56px;
+  // box-shadow: inset 0 0 1rem #3eb4f8, 0 0 1rem #3eb4f8;
+}
+
+.q-layout__section--marginal {
+  background-color: #260279;
+  color: #c8c8c8;
+}
+
+.select .q-field__native,
+.select .q-field__control::before,
+.select .q-field__control::after,
+.select .q-field__append {
+  color: $text;
+  border-color: $text;
+}

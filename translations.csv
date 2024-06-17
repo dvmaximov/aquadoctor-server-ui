@@ -1,0 +1,29 @@
+Key,"Русский, ru","English, en-US"
+,,
+#Общие
+"""failed""","Действие не выполнено.","Action failed"
+"""success""","Действие прошло успешно","Action was successful"
+,,
+#Логин-регистрация
+"""signin-title""","Вход в учетную запись","Login to your account"
+"""signup-title""","Регистрация учетной записи","Account registration"
+"""signin""","Войти","Sign in"
+"""signup""","Регистрация","Sign up"
+"""signout""","Выйти","Sign out"
+"""email""","Адрес эл. почты","Email"
+"""enter-email""","Введите адрес эл. почты","Enter your email"
+"""repeat password""","повторите пароль","repeat password"
+"""password""","Пароль","Password"
+"""create-password""","Введите пароль","Create a password"
+"""firstname""","Имя","First name"
+"""lastname""","Фамилия","Last name"
+"""gender""","Пол","Gender"
+,,
+#Валидация полей ввода
+"""required""","Поле, обязательное для заполнения","Field is required"
+"""email-failed""","Неправильный адрес эл. почты","Email is failed"
+,,
+#Ответы сервера
+"""UserNotFound""","Пользователь не найден","User not found"
+"""EmailAlwaysExists""","Пользователь с таким email уже зарегестрирован","A user with this email is already registered"
+"""BadUserPassword""","Неправильный пароль","Wrong password"
