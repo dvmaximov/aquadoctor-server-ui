@@ -1,11 +1,16 @@
 import axios, { AxiosError } from 'axios';
+import { Router, useRouter } from 'vue-router';
+import eventBus, { EventType } from 'src/services/event.bus';
 
 let host: string;
+
+const event_bus = eventBus;
 
 if (process.env.DEV) {
   host = `${location.protocol}//${location.hostname}:8882`;
 } else {
-  host = `${location.protocol}//${location.hostname}`;
+  const port = location.port === '' ? '' : `:${location.port}`;
+  host = `${location.protocol}//${location.hostname}${port}`;
 }
 
 export class CommonResponse {
@@ -19,10 +24,22 @@ class ApiService {
   setAuth(token: string) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   }
+  public redirect(statusCode: number, router: Router): void {
+    if (statusCode === 401) {
+      event_bus.sendData({ type: EventType.EVENT_CLEAR_USER, data: {} });
+      router.push('/signin');
+    } else if (statusCode === 403) {
+      router.push('/forbidden');
+    }
+  }
 
-  private handleError(err: unknown): CommonResponse {
+  private handleError(err: any, router: Router): CommonResponse {
+    const statusCode = err.response.status || 401;
+    this.redirect(statusCode, router);
+
     const res = new CommonResponse();
     const error = err as AxiosError;
+
     const data: any = error.response?.data;
     res.error = true;
     res.errorCode = data.statusCode;
@@ -31,39 +48,62 @@ class ApiService {
   }
 
   async find(path: string) {
-    const res = await axios.get(`${host}/api/${path}`);
-    return res.data;
-  }
-
-  async findById(path: string, id: number): Promise<unknown> {
-    const res = await axios.get(`${host}/api/${path}/${id}`);
-    return res.data;
-  }
-
-  async findByName(path: string, name: string): Promise<unknown> {
-    const res = await axios.get(`${host}/api/${path}/${name}`);
-    return res.data;
-  }
-
-  async insert(path: string, record: unknown = {}): Promise<unknown> {
+    const router = useRouter();
     try {
-      const response = await axios.post(`${host}/api/${path}/insert`, record);
+      const response = await axios.get(`${host}/api/${path}`);
       const res = new CommonResponse();
       res.data = response.data;
       return res;
-    } catch (err) {
-      return this.handleError(err);
+    } catch (err: any) {
+      return this.handleError(err, router);
     }
   }
 
-  async post(path: string, record: unknown = {}): Promise<CommonResponse> {
+  async findById(path: string, id: number): Promise<unknown> {
+    const router = useRouter();
+    try {
+      const response = await axios.get(`${host}/api/${path}/${id}`);
+      const res = new CommonResponse();
+      res.data = response.data;
+      return res;
+    } catch (err: any) {
+      return this.handleError(err, router);
+    }
+  }
+
+  async findByName(path: string, name: string): Promise<unknown> {
+    const router = useRouter();
+    try {
+      const response = await axios.get(`${host}/api/${path}/${name}`);
+      const res = new CommonResponse();
+      res.data = response.data;
+      return res;
+    } catch (err: any) {
+      return this.handleError(err, router);
+    }
+  }
+
+  async insert(path: string, record: unknown = {}): Promise<any> {
+    const router = useRouter();
     try {
       const response = await axios.post(`${host}/api/${path}`, record);
       const res = new CommonResponse();
       res.data = response.data;
       return res;
     } catch (err) {
-      return this.handleError(err);
+      return this.handleError(err, router);
+    }
+  }
+
+  async post(path: string, record: unknown = {}): Promise<CommonResponse> {
+    const router = useRouter();
+    try {
+      const response = await axios.post(`${host}/api/${path}`, record);
+      const res = new CommonResponse();
+      res.data = response.data;
+      return res;
+    } catch (err) {
+      return this.handleError(err, router);
     }
   }
 

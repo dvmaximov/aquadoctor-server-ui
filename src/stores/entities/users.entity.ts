@@ -1,13 +1,13 @@
 export class User {
   id?: number;
-  email: string | undefined;
-  firstName: string | undefined;
-  lastName: string | undefined;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
   middleName?: string;
   password?: string;
-  gender: string | undefined;
+  gender?: string;
   image?: string;
-  birthday: number | undefined;
+  birthday?: number;
   role?: 'admin' | 'user';
 }
 

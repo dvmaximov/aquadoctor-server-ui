@@ -1,21 +1,15 @@
 <template>
-  <q-item
-    clickable
-    tag="a"
-    target="_blank"
-    :href="link"
-  >
-    <q-item-section
-      v-if="icon"
-      avatar
-    >
-      <q-icon :name="icon" />
-    </q-item-section>
+  <q-item>
+    <router-link class="q-mr-md link" :to="`${link}`">
+      <q-item-section v-if="icon" avatar>
+        <q-icon :name="icon" />
+      </q-item-section>
 
-    <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
-    </q-item-section>
+      <q-item-section>
+        <q-item-label>{{ $t(title) }}</q-item-label>
+        <q-item-label caption>{{ caption }}</q-item-label>
+      </q-item-section>
+    </router-link>
   </q-item>
 </template>
 
@@ -27,23 +21,36 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
 
     caption: {
       type: String,
-      default: ''
+      default: '',
     },
 
     link: {
       type: String,
-      default: '#'
+      default: '#',
     },
 
     icon: {
       type: String,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 });
 </script>
+<style lang="scss" scoped>
+.link {
+  text-decoration: none;
+  color: $text;
+  // font-weight: bold;
+  font-size: 16px;
+  line-height: 1.2em !important;
+
+  &:hover {
+    color: $primary;
+  }
+}
+</style>

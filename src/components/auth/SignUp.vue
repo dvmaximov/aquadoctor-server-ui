@@ -13,6 +13,7 @@
     >
       <q-card-section>
         <q-input
+          autofocus
           standout
           v-model="email"
           :label="$t('email') + '*'"
@@ -90,6 +91,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { date } from 'quasar';
 
 import { useAuthStore } from 'src/stores/auth.store';
@@ -97,6 +99,7 @@ import { User } from 'src/stores/entities/users.entity';
 
 const { formatDate, extractDate } = date;
 const store = useAuthStore();
+const router = useRouter();
 
 const email = ref<string>('');
 const firstName = ref<string>('');
@@ -107,15 +110,18 @@ const gender = ref<'male' | 'female'>('male');
 const isShowPassword = ref<boolean>(false);
 const genderOptions = ['male', 'female'];
 
-const submit = () => {
+const submit = async () => {
   const newUser = new User();
-  (newUser.email = email.value),
-    (newUser.firstName = firstName.value),
-    (newUser.lastName = lastName.value),
-    (newUser.password = password.value),
-    (newUser.birthday = extractDate(birthDay.value, 'YYYY/MM/DD').getTime()),
-    (newUser.gender = gender.value),
-    store.signUp(newUser);
+  newUser.email = email.value;
+  newUser.firstName = firstName.value;
+  newUser.lastName = lastName.value;
+  newUser.password = password.value;
+  newUser.birthday = extractDate(birthDay.value, 'YYYY/MM/DD').getTime();
+  newUser.gender = gender.value;
+  const res = await store.signUp(newUser);
+  if (res) {
+    router.push('/profile');
+  }
 };
 const reset = () => {
   //

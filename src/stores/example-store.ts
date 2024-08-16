@@ -1,15 +1,11 @@
 import { defineStore } from 'pinia';
+import { User } from 'src/stores/entities/users.entity';
+import apiService from 'src/services/api.service';
 
-export const useCounterStore = defineStore('counter', {
+export const useUsersStore = defineStore('users', {
   state: () => ({
-    counter: 0,
+    users: [] as User[],
   }),
-  getters: {
-    doubleCount: (state) => state.counter * 2,
-  },
-  actions: {
-    increment() {
-      this.counter++;
-    },
-  },
+  getters: {},
+  actions: {},
 });

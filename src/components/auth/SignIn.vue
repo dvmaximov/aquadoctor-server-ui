@@ -13,6 +13,7 @@
     >
       <q-card-section>
         <q-input
+          autofocus
           class="input"
           standout
           v-model="email"
@@ -54,16 +55,21 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth.store';
 
 const store = useAuthStore();
+const router = useRouter();
 
 const email = ref<string>('');
 const password = ref<string>('');
 const isShowPassword = ref<boolean>(false);
 
 const submit = async () => {
-  await store.signIn(email.value, password.value);
+  const res = await store.signIn(email.value, password.value);
+  if (res) {
+    router.push('/profile');
+  }
 };
 const reset = () => {
   //

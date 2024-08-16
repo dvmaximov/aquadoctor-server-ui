@@ -17,4 +17,17 @@ body.body--dark {
 }
 
 @import './ui/panel.scss';
+@import './quasar/drawer';
 @import './quasar/field';
+
+.min-height-87vh {
+  min-height: 87vh;
+}
+
+.min-height-80vh {
+  min-height: 80vh;
+}
+
+.no-scroll-y {
+  overflow-y: hidden;
+}

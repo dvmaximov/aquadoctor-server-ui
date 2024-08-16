@@ -3,8 +3,34 @@ Key,"Русский, ru","English, en-US"
 #Общие
 """failed""","Действие не выполнено.","Action failed"
 """success""","Действие прошло успешно","Action was successful"
+'close',"Заурыть","Close"
+'ok',"Ok","Ok"
+'cancel',"Отмена","Cancel"
+'save',"Сохранить","Save"
+'control',"Управление","Control"
+'created',"Дата создания","Created"
+'searchByName',"Поиск по имени","Search by name"
+'searchByEmail',"Поиск по email","Search by email"
+'name',"Наименование","Name"
+'deleteRecord',"Удалить запись","Delete record"
+'delete',"Удалить","Delete"
+'Unauthorized',"Пользователь не авторизован","User is not authorized"
+'description',"Описание","Description"
+,,
+#Ссылки
+'administrator',"Администратор","Administrator"
+'userList',"Список пользователей","Users list"
+'diagnostic',"Диагностика","Diagnostic"
+'profile',"Профиль пользователя","User profile"
+'aquadoctor',"Программы Aquadoctor","Aquadoctor programs"
+'breathing',"Программы Breathing","Breathing programs"
+'orderedPrograms',"Заказанные программы","Ordered programs"
+'orderedAquadoctor',"Aquadoctor","Aquadoctor"
+'orderedBreathing',"Дыхательные упражнения","Breathing exercises"
+'orders',"Заказы","Orders"
 ,,
 #Логин-регистрация
+,,
 """signin-title""","Вход в учетную запись","Login to your account"
 """signup-title""","Регистрация учетной записи","Account registration"
 """signin""","Войти","Sign in"
@@ -17,7 +43,22 @@ Key,"Русский, ru","English, en-US"
 """create-password""","Введите пароль","Create a password"
 """firstname""","Имя","First name"
 """lastname""","Фамилия","Last name"
+'middlename',"Отчество","Middle name"
 """gender""","Пол","Gender"
+'birthday',"Дата рождения","Birthday"
+,,
+#Диагностика
+'diagnosticList',"Диагностика пользователя","Users diagnostic"
+,,
+#Пользователь
+'userProfile',"Профиль пользователя","User profile"
+'userName',"Имя пользователя","User name"
+'role',"Роль","Role"
+,,
+#Музыка
+'MusikAlreadyExists',"Музыкальный файл уже был зыгружен","The music file has already been uploaded."
+'MusikAdded',"Музыкальный файл успешно добавлен!","Music file added successfully!"
+'musikName',"Название программы","Programs name"
 ,,
 #Валидация полей ввода
 """required""","Поле, обязательное для заполнения","Field is required"

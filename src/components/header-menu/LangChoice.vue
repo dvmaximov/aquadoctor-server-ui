@@ -14,13 +14,23 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue';
+import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n';
+import { useAuthStore } from 'src/stores/auth.store';
 
 const { locale } = useI18n({ useScope: 'global' });
-const langOptions = [
-  { label: 'Русский', value: 'ru' },
-  { label: 'English', value: 'en-US' },
-];
+const authStore = useAuthStore();
+const { langOptions } = storeToRefs(authStore);
+
+watch(
+  () => locale.value,
+  (newLang) => {
+    authStore.setLang(newLang);
+  }
+);
+
+locale.value = authStore.getLang();
 </script>
 
 <style lang="scss" scoped>

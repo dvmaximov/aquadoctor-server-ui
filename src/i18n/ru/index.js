@@ -6,8 +6,34 @@ export default {
 	// Общие
 	"failed": `Действие не выполнено.`,
 	"success": `Действие прошло успешно`,
+	'close': `Заурыть`,
+	'ok': `Ok`,
+	'cancel': `Отмена`,
+	'save': `Сохранить`,
+	'control': `Управление`,
+	'created': `Дата создания`,
+	'searchByName': `Поиск по имени`,
+	'searchByEmail': `Поиск по email`,
+	'name': `Наименование`,
+	'deleteRecord': `Удалить запись`,
+	'delete': `Удалить`,
+	'Unauthorized': `Пользователь не авторизован`,
+	'description': `Описание`,
+
+	// Ссылки
+	'administrator': `Администратор`,
+	'userList': `Список пользователей`,
+	'diagnostic': `Диагностика`,
+	'profile': `Профиль пользователя`,
+	'aquadoctor': `Программы Aquadoctor`,
+	'breathing': `Программы Breathing`,
+	'orderedPrograms': `Заказанные программы`,
+	'orderedAquadoctor': `Aquadoctor`,
+	'orderedBreathing': `Дыхательные упражнения`,
+	'orders': `Заказы`,
 
 	// Логин-регистрация
+
 	"signin-title": `Вход в учетную запись`,
 	"signup-title": `Регистрация учетной записи`,
 	"signin": `Войти`,
@@ -20,7 +46,22 @@ export default {
 	"create-password": `Введите пароль`,
 	"firstname": `Имя`,
 	"lastname": `Фамилия`,
+	'middlename': `Отчество`,
 	"gender": `Пол`,
+	'birthday': `Дата рождения`,
+
+	// Диагностика
+	'diagnosticList': `Диагностика пользователя`,
+
+	// Пользователь
+	'userProfile': `Профиль пользователя`,
+	'userName': `Имя пользователя`,
+	'role': `Роль`,
+
+	// Музыка
+	'MusikAlreadyExists': `Музыкальный файл уже был зыгружен`,
+	'MusikAdded': `Музыкальный файл успешно добавлен!`,
+	'musikName': `Название программы`,
 
 	// Валидация полей ввода
 	"required": `Поле, обязательное для заполнения`,

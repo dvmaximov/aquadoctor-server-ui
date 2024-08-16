@@ -6,8 +6,34 @@ export default {
 	// Общие
 	"failed": `Action failed`,
 	"success": `Action was successful`,
+	'close': `Close`,
+	'ok': `Ok`,
+	'cancel': `Cancel`,
+	'save': `Save`,
+	'control': `Control`,
+	'created': `Created`,
+	'searchByName': `Search by name`,
+	'searchByEmail': `Search by email`,
+	'name': `Name`,
+	'deleteRecord': `Delete record`,
+	'delete': `Delete`,
+	'Unauthorized': `User is not authorized`,
+	'description': `Description`,
+
+	// Ссылки
+	'administrator': `Administrator`,
+	'userList': `Users list`,
+	'diagnostic': `Diagnostic`,
+	'profile': `User profile`,
+	'aquadoctor': `Aquadoctor programs`,
+	'breathing': `Breathing programs`,
+	'orderedPrograms': `Ordered programs`,
+	'orderedAquadoctor': `Aquadoctor`,
+	'orderedBreathing': `Breathing exercises`,
+	'orders': `Orders`,
 
 	// Логин-регистрация
+
 	"signin-title": `Login to your account`,
 	"signup-title": `Account registration`,
 	"signin": `Sign in`,
@@ -20,7 +46,22 @@ export default {
 	"create-password": `Create a password`,
 	"firstname": `First name`,
 	"lastname": `Last name`,
+	'middlename': `Middle name`,
 	"gender": `Gender`,
+	'birthday': `Birthday`,
+
+	// Диагностика
+	'diagnosticList': `Users diagnostic`,
+
+	// Пользователь
+	'userProfile': `User profile`,
+	'userName': `User name`,
+	'role': `Role`,
+
+	// Музыка
+	'MusikAlreadyExists': `The music file has already been uploaded.`,
+	'MusikAdded': `Music file added successfully!`,
+	'musikName': `Programs name`,
 
 	// Валидация полей ввода
 	"required": `Field is required`,

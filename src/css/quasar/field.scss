@@ -2,23 +2,11 @@
   margin-top: 5px;
 }
 
-// .q-field--standout .q-field__control {
-//   background-color: #81797969;
-//   // color: $text;
-// }
-
-// .q-field--focused .q-field__inner .q-field__control {
-//   background-color: #81797969;
-// }
-
-// .q-field__label,
-// .q-field__native,
-// .q-field__prefix,
-// .q-field__suffix,
-// .q-field__input {
-//   color: $text;
-// }
-
 .body--dark .q-field--error .q-field__bottom {
   color: $field-error;
+}
+
+.q-item__label {
+  font-size: 16px;
+  color: $text;
 }

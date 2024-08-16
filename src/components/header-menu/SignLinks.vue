@@ -8,12 +8,19 @@
       >{{ $t(`${link.label}`) }}</router-link
     >
   </div>
-  <div v-else class="flex justify-between items-center q-mr-lg link">
-    <div @click="signOut" class="q-mr-md">{{ $t('signout') }}</div>
+  <div v-else class="flex justify-between items-center q-mr-lg">
+    <div class="q-mr-md">
+      <router-link class="q-mr-md link" :to="`/users`">{{
+        `${user!.firstName} ${user!.lastName}`
+      }}</router-link>
+    </div>
+    <div @click="signOut" class="q-mr-md link">{{ $t('signout') }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from 'src/stores/auth.store';
 const linkList = [
@@ -27,11 +34,20 @@ const linkList = [
   },
 ];
 
+const router = useRouter();
 const store = useAuthStore();
-const { isAuth } = storeToRefs(store);
+const { isAuth, user } = storeToRefs(store);
+
+watch(
+  () => isAuth.value,
+  (value) => {
+    if (value) router.push('/profile');
+  }
+);
 
 const signOut = () => {
   store.signOut();
+  router.push('/');
 };
 </script>
 
