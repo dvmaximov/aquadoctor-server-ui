@@ -1,12 +1,15 @@
 Key,"Русский, ru","English, en-US"
 ,,
 #Общие
-"""failed""","Действие не выполнено.","Action failed"
-"""success""","Действие прошло успешно","Action was successful"
-'close',"Заурыть","Close"
+'failed',"Действие не выполнено.","Action failed"
+'success',"Действие прошло успешно","Action was successful"
+'blank'," "," "
+'close',"Закрыть","Close"
 'ok',"Ok","Ok"
 'cancel',"Отмена","Cancel"
 'save',"Сохранить","Save"
+'edit',"Редактировать","Edit"
+'delete',"Удалить","Delete"
 'control',"Управление","Control"
 'created',"Дата создания","Created"
 'searchByName',"Поиск по имени","Search by name"
@@ -16,6 +19,11 @@ Key,"Русский, ru","English, en-US"
 'delete',"Удалить","Delete"
 'Unauthorized',"Пользователь не авторизован","User is not authorized"
 'description',"Описание","Description"
+'Yes',"Да","Yes"
+'No',"Нет","No"
+'order',"Заказать","Order"
+'startDate',"Дата старта","Start date"
+'endDate',"Дата окончания","End date"
 ,,
 #Ссылки
 'administrator',"Администратор","Administrator"
@@ -26,11 +34,14 @@ Key,"Русский, ru","English, en-US"
 'breathing',"Программы Breathing","Breathing programs"
 'orderedPrograms',"Заказанные программы","Ordered programs"
 'orderedAquadoctor',"Aquadoctor","Aquadoctor"
-'orderedBreathing',"Дыхательные упражнения","Breathing exercises"
+'orderedBreathing',"Дыхательное упражнение","Breathing exercise"
+'aquadoctorOrder',"Заказ программ Aquadoctor","Order Aquadoctor programs"
 'orders',"Заказы","Orders"
+'YouOrders',"Ваши заказы","You orders"
+'download',"Скачать","Download"
+'breathingOrder',"Расчет дыхательной имнастики","Calculation of breathing exercises"
 ,,
 #Логин-регистрация
-,,
 """signin-title""","Вход в учетную запись","Login to your account"
 """signup-title""","Регистрация учетной записи","Account registration"
 """signin""","Войти","Sign in"
@@ -54,6 +65,7 @@ Key,"Русский, ru","English, en-US"
 'userProfile',"Профиль пользователя","User profile"
 'userName',"Имя пользователя","User name"
 'role',"Роль","Role"
+'ActiveState',"Активация","Activation"
 ,,
 #Музыка
 'MusikAlreadyExists',"Музыкальный файл уже был зыгружен","The music file has already been uploaded."
@@ -65,6 +77,30 @@ Key,"Русский, ru","English, en-US"
 """email-failed""","Неправильный адрес эл. почты","Email is failed"
 ,,
 #Ответы сервера
-"""UserNotFound""","Пользователь не найден","User not found"
-"""EmailAlwaysExists""","Пользователь с таким email уже зарегестрирован","A user with this email is already registered"
-"""BadUserPassword""","Неправильный пароль","Wrong password"
+'UserNotFound',"Пользователь не найден","User not found"
+'EmailAlwaysExists',"Пользователь с таким email уже зарегестрирован","A user with this email is already registered"
+'BadUserPassword',"Неправильный пароль","Wrong password"
+'MusikNotFound',"Программа не найдена","Program not found"
+'LastDiagnosticNotFound',"Нет данных диагностики","No diagnostic data"
+,,
+#Загрузка файлов
+'DeleteDownloadedFiles',"Удалить загруженные файлы","Delete downloaded files"
+'ClearFiles',"Очистить","Clear"
+'UploadingFile',"Загрузка файла","Uploading file"
+'SelectFile',"Выбрать файл","Select file"
+'UploadFile',"Загрузить файл","Upload file"
+'AbortUpload',"Отмена загрузки","Abort upload"
+,,
+#Таблицы
+'RowsPerPage',"Строк на странице","Rows per page"
+'NoData',"Нет данных","No data"
+,,
+#Aquadoctor
+'AquadoctorEdit',"Редактирование заказа Aquadoctor","Aquadoctor order edit"
+'color1',"Верхний цвет","Top color"
+'color2',"Средний цвет","Medium color"
+'color3',"Нижний цвет","Bottom color"
+'upTime',"Время набора","Time of recruitment"
+'constTime',"Время задержки","Delay time"
+'downTime',"Время затухания","Decay time"
+'speed',"Скорость","Speed"

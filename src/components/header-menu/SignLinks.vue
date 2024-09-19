@@ -10,7 +10,7 @@
   </div>
   <div v-else class="flex justify-between items-center q-mr-lg">
     <div class="q-mr-md">
-      <router-link class="q-mr-md link" :to="`/users`">{{
+      <router-link class="q-mr-md link" :to="`/profile`">{{
         `${user!.firstName} ${user!.lastName}`
       }}</router-link>
     </div>
@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from 'src/stores/auth.store';
@@ -37,13 +36,6 @@ const linkList = [
 const router = useRouter();
 const store = useAuthStore();
 const { isAuth, user } = storeToRefs(store);
-
-watch(
-  () => isAuth.value,
-  (value) => {
-    if (value) router.push('/profile');
-  }
-);
 
 const signOut = () => {
   store.signOut();

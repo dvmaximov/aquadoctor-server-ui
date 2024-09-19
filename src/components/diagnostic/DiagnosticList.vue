@@ -2,7 +2,10 @@
   <LoadingSpinner v-if="loading" />
   <q-table
     v-else
-    :class="{ 'table-desktop': $q.screen.gt.sm }"
+    :class="{
+      'table-desktop': $q.screen.gt.sm,
+      'height-80vh': $q.screen.gt.sm,
+    }"
     flat
     bordered
     virtual-scroll

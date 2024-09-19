@@ -39,9 +39,9 @@ export default route(function (/* { store, ssrContext } */) {
   });
 
   Router.beforeResolve((to) => {
-    if (!checkUserAuth(to.path)) {
-      return '/signin';
-    }
+    // if (!checkUserAuth(to.path)) {
+    //   return '/signin';
+    // }
   });
 
   // Router.afterEach((to, from) => {

@@ -16,4 +16,5 @@ export class Diagnostic {
   heightM = 0;
   sadMMHg = 0;
   dadMMHg = 0;
+  active = true;
 }

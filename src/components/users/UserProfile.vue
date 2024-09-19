@@ -1,8 +1,20 @@
 <template>
-  <q-form class="q-gutter-md q-mt-lg" @submit.prevent.stop="submit">
+  <q-form
+    class="q-gutter-md q-mt-lg"
+    :class="{ 'table-desktop': $q.screen.gt.sm }"
+    @submit.prevent.stop="submit"
+  >
     <q-field borderless>
-      <div class="col-7 self-center no-outline label">
+      <div class="self-center no-outline label">
         <span>E-mail: </span> {{ userEdit!.email }}
+        <q-btn
+          :disable="!modified"
+          outline
+          class="q-ml-xl"
+          color="primary"
+          type="submit"
+          :label="$t('save')"
+        />
       </div>
     </q-field>
 
@@ -11,11 +23,12 @@
     <div class="row input">
       <q-input
         autofocus
-        class="col-7"
+        class="col-10"
         :class="{ 'col-12': $q.screen.lt.md }"
         outlined
         :label="$t('firstname') + ' *'"
         v-model="userEdit!.firstName"
+        @update:model-value="modified = true"
         :rules="[
             (val: string) => !!val || $t('required'),
           ]"
@@ -24,11 +37,12 @@
 
     <div class="row input">
       <q-input
-        class="col-7"
+        class="col-10"
         :class="{ 'col-12': $q.screen.lt.md }"
         outlined
         :label="$t('middlename')"
         v-model="userEdit!.middleName"
+        @update:model-value="modified = true"
         :rules="[
             (val: string) => true,
           ]"
@@ -37,11 +51,12 @@
 
     <div class="row input">
       <q-input
-        class="col-7"
+        class="col-10"
         :class="{ 'col-12': $q.screen.lt.md }"
         outlined
         :label="$t('lastname') + ' *'"
         v-model="userEdit!.lastName"
+        @update:model-value="modified = true"
         :rules="[
             (val: string) => !!val || $t('required'),
           ]"
@@ -53,9 +68,10 @@
         outlined
         v-model="birthday"
         mask="date"
+        @update:model-value="modified = true"
         :rules="['date']"
         :label="$t('birthday') + ' *'"
-        class="col-7"
+        class="col-10"
         :class="{ 'col-12': $q.screen.lt.md }"
       >
         <template v-slot:append>
@@ -86,8 +102,6 @@
     </div>
 
     <q-separator inset />
-
-    <q-btn outline color="primary" type="submit" :label="$t('save')" />
   </q-form>
 </template>
 
@@ -117,6 +131,7 @@ const route = useRoute();
 const authStore = useAuthStore();
 const usersStore = useUsersStore();
 const { user } = storeToRefs(authStore);
+const modified = ref(false);
 
 const userEdit = ref<User | null>(null);
 const id = route.params.userId ? +route.params.userId : props.userId;
@@ -131,6 +146,7 @@ const submit = async () => {
 
   await usersStore.save(userToSave);
   authStore.save(userToSave);
+  modified.value = false;
 };
 </script>
 

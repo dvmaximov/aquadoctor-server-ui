@@ -1,10 +1,10 @@
 <template>
   <section class="q-mx-md q-my-sm">
     <h5>{{ $t('aquadoctor') }}</h5>
-    <AquadoctorListAdmin />
+    <MusikListAdmin />
   </section>
 </template>
 
 <script setup lang="ts">
-import AquadoctorListAdmin from 'src/components/aquadoctor/AquadoctorListAdmin.vue';
+import MusikListAdmin from 'src/components/aquadoctor/MusikListAdmin.vue';
 </script>

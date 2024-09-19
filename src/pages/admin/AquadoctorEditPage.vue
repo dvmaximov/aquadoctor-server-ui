@@ -1,10 +1,9 @@
 <template>
-  <section class="q-mx-md q-my-sm">
-    <h5>{{ $t('aquadoctor') }}</h5>
-    <AquadoctorEditAdmin />
-  </section>
+  <q-page class="q-mx-md q-my-sm">
+    <AquadoctorOrderEdit />
+  </q-page>
 </template>
 
 <script setup lang="ts">
-import AquadoctorEditAdmin from 'src/components/aquadoctor/AquadoctorEditAdmin.vue';
+import AquadoctorOrderEdit from 'src/components/aquadoctor/AquadoctorOrderEdit.vue';
 </script>

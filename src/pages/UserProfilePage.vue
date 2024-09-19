@@ -1,6 +1,6 @@
 <template>
   <section class="q-mx-md q-my-sm">
-    <h5>{{ $t('userProfile') }}</h5>
+    <h5 class="q-mb-xl">{{ $t('userProfile') }}</h5>
     <UserProfile :userId="userId" current />
   </section>
 </template>

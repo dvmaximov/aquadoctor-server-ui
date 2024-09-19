@@ -9,6 +9,7 @@ export class User {
   image?: string;
   birthday?: number;
   role?: 'admin' | 'user';
+  active?: number;
 }
 
 export type Users = User[];

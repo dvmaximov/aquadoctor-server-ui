@@ -1,8 +1,8 @@
 <template>
-  <section class="q-mx-md q-my-sm">
-    <h4 class="q-mb-xl">{{ $t('userList') }}</h4>
+  <q-page class="q-mx-md q-my-sm">
+    <h5 class="q-mb-xl">{{ $t('userList') }}</h5>
     <UsersList />
-  </section>
+  </q-page>
 </template>
 
 <script setup lang="ts">

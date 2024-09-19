@@ -32,8 +32,8 @@
 
           <q-tab-panel name="orders" class="q-pa-none no-scroll-y">
             <div class="q-pa-md">
-              <AquadoctorOrders :userId="userId" />
-              <BreathingOrders :userId="userId" />
+              <AquadoctorOrders :userId="userId" correct />
+              <BreathingOrder :userId="userId" />
             </div>
           </q-tab-panel>
         </q-tab-panels>
@@ -48,7 +48,7 @@ import { useRoute } from 'vue-router';
 import UserProfile from 'src/components/users/UserProfile.vue';
 import DiagnosticList from 'src/components/diagnostic/DiagnosticList.vue';
 import AquadoctorOrders from 'src/components/aquadoctor/AquadoctorOrders.vue';
-import BreathingOrders from 'src/components/breathing/BreathingOrders.vue';
+import BreathingOrder from 'src/components/breathing/BreathingOrder.vue';
 
 const route = useRoute();
 const userId = +route.params.userId;

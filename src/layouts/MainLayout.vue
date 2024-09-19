@@ -1,74 +1,83 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <header class="flex items-center justify-between fixed-top header">
-      <q-btn
-        class="md-hide lg-hide xl-hide"
+    <LoadingSpinner v-if="loading" />
+    <div v-else>
+      <header class="flex items-center justify-between fixed-top header">
+        <q-btn
+          class="md-hide lg-hide xl-hide"
+          v-if="!disableDrawer"
+          flat
+          dense
+          round
+          icon="menu"
+          aria-label="Menu"
+          @click="toggleLeftDrawer"
+        />
+
+        <router-link class="q-mr-md logo sm-hide xs-hide" to="/"
+          ><q-toolbar-title> Fatigueindex </q-toolbar-title></router-link
+        >
+
+        <div class="flex justify-between">
+          <SignLinks />
+          <LangChoice class="sm-hide xs-hide" />
+        </div>
+      </header>
+
+      <q-drawer
         v-if="!disableDrawer"
-        flat
-        dense
-        round
-        icon="menu"
-        aria-label="Menu"
-        @click="toggleLeftDrawer"
-      />
-
-      <router-link class="q-mr-md logo sm-hide xs-hide" to="/"
-        ><q-toolbar-title> Fatigueindex </q-toolbar-title></router-link
+        v-model="leftDrawerOpen"
+        :class="{ 'drawer-filled': $q.screen.lt.md }"
       >
+        <q-list>
+          <LangChoice class="md-hide lg-hide xl-hide" />
+          <q-separator />
+          <!-- <q-item-label header> Fatigueindex </q-item-label> -->
 
-      <div class="flex justify-between">
-        <SignLinks />
-        <LangChoice class="sm-hide xs-hide" />
-      </div>
-    </header>
+          <q-list class="q-mx-md q-mt-lg">
+            <EssentialLink
+              v-for="link in essentialLinks"
+              :key="link.title"
+              v-bind="link"
+            />
+          </q-list>
 
-    <q-drawer v-if="!disableDrawer" v-model="leftDrawerOpen">
-      <q-list>
-        <LangChoice class="md-hide lg-hide xl-hide" />
-        <q-separator />
-        <!-- <q-item-label header> Fatigueindex </q-item-label> -->
+          <q-expansion-item
+            class="q-mx-md q-mb-lg"
+            expand-separator
+            icon=""
+            :label="$t('YouOrders')"
+            ><div class="q-pl-xl">
+              <EssentialLink
+                v-for="link in ordered"
+                :key="$t(link.title)"
+                v-bind="link"
+              />
+            </div>
+          </q-expansion-item>
 
-        <q-list class="q-mx-md q-mt-lg">
-          <EssentialLink
-            v-for="link in essentialLinks"
-            :key="link.title"
-            v-bind="link"
-          />
+          <q-separator />
+
+          <q-expansion-item
+            v-if="isHasAdminLinks"
+            expand-separator
+            icon="mdsecurity"
+            :label="$t('administrator')"
+            ><div class="q-pl-xl">
+              <EssentialLink
+                v-for="link in links"
+                :key="$t(link.title)"
+                v-bind="link"
+              />
+            </div>
+          </q-expansion-item>
         </q-list>
+      </q-drawer>
 
-        <q-expansion-item
-          class="q-mx-md q-mb-lg"
-          expand-separator
-          icon=""
-          :label="$t('orderedPrograms')"
-          ><div class="q-pl-xl">
-            <EssentialLink
-              v-for="link in ordered"
-              :key="$t(link.title)"
-              v-bind="link"
-            />
-          </div>
-        </q-expansion-item>
-
-        <q-expansion-item
-          v-if="isHasAdminLinks"
-          expand-separator
-          icon="mdsecurity"
-          :label="$t('administrator')"
-          ><div class="q-pl-xl">
-            <EssentialLink
-              v-for="link in links"
-              :key="$t(link.title)"
-              v-bind="link"
-            />
-          </div>
-        </q-expansion-item>
-      </q-list>
-    </q-drawer>
-
-    <q-page-container style="padding-top: 60px">
-      <router-view />
-    </q-page-container>
+      <q-page-container style="padding-top: 60px">
+        <router-view />
+      </q-page-container>
+    </div>
   </q-layout>
 </template>
 
@@ -81,6 +90,8 @@ import EssentialLink from 'components/EssentialLink.vue';
 import LangChoice from 'src/components/header-menu/LangChoice.vue';
 import SignLinks from 'src/components/header-menu/SignLinks.vue';
 import { useAuthStore } from 'src/stores/auth.store';
+import { useMessageStore } from 'src/stores/message.store';
+import LoadingSpinner from 'src/components/LoadingSpinner.vue';
 
 const linksList = [
   {
@@ -95,11 +106,29 @@ const linksList = [
     icon: '',
     link: `/diagnostic`,
   },
+  {
+    title: 'aquadoctorOrder',
+    caption: '',
+    icon: '',
+    link: `/aquadoctororder`,
+  },
+  {
+    title: 'breathingOrder',
+    caption: '',
+    icon: '',
+    link: `/breathingorder`,
+  },
+  {
+    title: 'download',
+    caption: '',
+    icon: '',
+    link: `/download`,
+  },
 ];
 
 const ordered = [
   {
-    title: 'orderedAquadoctor',
+    title: 'aquadoctor',
     caption: '',
     icon: '',
     link: '/orderedAquadoctor',
@@ -113,13 +142,15 @@ const ordered = [
 ];
 
 const authStore = useAuthStore();
-authStore.getToken();
-const { links, isHasAdminLinks } = storeToRefs(authStore);
+const messageStore = useMessageStore();
+const { links, isHasAdminLinks, loading } = storeToRefs(authStore);
 const $q = useQuasar();
 const route = useRoute();
-const disableDrawer = ref(true);
+const disableDrawer = ref(route.meta.disableDrawer as boolean);
 const leftDrawerOpen = ref(true);
 const essentialLinks = ref(linksList);
+
+authStore.getToken();
 
 watch(
   () => route.path,

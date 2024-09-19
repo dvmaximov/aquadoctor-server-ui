@@ -4,12 +4,15 @@
 export default {
 
 	// Общие
-	"failed": `Action failed`,
-	"success": `Action was successful`,
+	'failed': `Action failed`,
+	'success': `Action was successful`,
+	'blank': ` `,
 	'close': `Close`,
 	'ok': `Ok`,
 	'cancel': `Cancel`,
 	'save': `Save`,
+	'edit': `Edit`,
+	'delete': `Delete`,
 	'control': `Control`,
 	'created': `Created`,
 	'searchByName': `Search by name`,
@@ -19,6 +22,11 @@ export default {
 	'delete': `Delete`,
 	'Unauthorized': `User is not authorized`,
 	'description': `Description`,
+	'Yes': `Yes`,
+	'No': `No`,
+	'order': `Order`,
+	'startDate': `Start date`,
+	'endDate': `End date`,
 
 	// Ссылки
 	'administrator': `Administrator`,
@@ -29,11 +37,14 @@ export default {
 	'breathing': `Breathing programs`,
 	'orderedPrograms': `Ordered programs`,
 	'orderedAquadoctor': `Aquadoctor`,
-	'orderedBreathing': `Breathing exercises`,
+	'orderedBreathing': `Breathing exercise`,
+	'aquadoctorOrder': `Order Aquadoctor programs`,
 	'orders': `Orders`,
+	'YouOrders': `You orders`,
+	'download': `Download`,
+	'breathingOrder': `Calculation of breathing exercises`,
 
 	// Логин-регистрация
-
 	"signin-title": `Login to your account`,
 	"signup-title": `Account registration`,
 	"signin": `Sign in`,
@@ -57,6 +68,7 @@ export default {
 	'userProfile': `User profile`,
 	'userName': `User name`,
 	'role': `Role`,
+	'ActiveState': `Activation`,
 
 	// Музыка
 	'MusikAlreadyExists': `The music file has already been uploaded.`,
@@ -68,7 +80,31 @@ export default {
 	"email-failed": `Email is failed`,
 
 	// Ответы сервера
-	"UserNotFound": `User not found`,
-	"EmailAlwaysExists": `A user with this email is already registered`,
-	"BadUserPassword": `Wrong password`,
+	'UserNotFound': `User not found`,
+	'EmailAlwaysExists': `A user with this email is already registered`,
+	'BadUserPassword': `Wrong password`,
+	'MusikNotFound': `Program not found`,
+	'LastDiagnosticNotFound': `No diagnostic data`,
+
+	// Загрузка файлов
+	'DeleteDownloadedFiles': `Delete downloaded files`,
+	'ClearFiles': `Clear`,
+	'UploadingFile': `Uploading file`,
+	'SelectFile': `Select file`,
+	'UploadFile': `Upload file`,
+	'AbortUpload': `Abort upload`,
+
+	// Таблицы
+	'RowsPerPage': `Rows per page`,
+	'NoData': `No data`,
+
+	// Aquadoctor
+	'AquadoctorEdit': `Aquadoctor order edit`,
+	'color1': `Top color`,
+	'color2': `Medium color`,
+	'color3': `Bottom color`,
+	'upTime': `Time of recruitment`,
+	'constTime': `Delay time`,
+	'downTime': `Decay time`,
+	'speed': `Speed`,
 }

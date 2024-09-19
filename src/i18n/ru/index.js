@@ -4,12 +4,15 @@
 export default {
 
 	// Общие
-	"failed": `Действие не выполнено.`,
-	"success": `Действие прошло успешно`,
-	'close': `Заурыть`,
+	'failed': `Действие не выполнено.`,
+	'success': `Действие прошло успешно`,
+	'blank': ` `,
+	'close': `Закрыть`,
 	'ok': `Ok`,
 	'cancel': `Отмена`,
 	'save': `Сохранить`,
+	'edit': `Редактировать`,
+	'delete': `Удалить`,
 	'control': `Управление`,
 	'created': `Дата создания`,
 	'searchByName': `Поиск по имени`,
@@ -19,6 +22,11 @@ export default {
 	'delete': `Удалить`,
 	'Unauthorized': `Пользователь не авторизован`,
 	'description': `Описание`,
+	'Yes': `Да`,
+	'No': `Нет`,
+	'order': `Заказать`,
+	'startDate': `Дата старта`,
+	'endDate': `Дата окончания`,
 
 	// Ссылки
 	'administrator': `Администратор`,
@@ -29,11 +37,14 @@ export default {
 	'breathing': `Программы Breathing`,
 	'orderedPrograms': `Заказанные программы`,
 	'orderedAquadoctor': `Aquadoctor`,
-	'orderedBreathing': `Дыхательные упражнения`,
+	'orderedBreathing': `Дыхательное упражнение`,
+	'aquadoctorOrder': `Заказ программ Aquadoctor`,
 	'orders': `Заказы`,
+	'YouOrders': `Ваши заказы`,
+	'download': `Скачать`,
+	'breathingOrder': `Расчет дыхательной имнастики`,
 
 	// Логин-регистрация
-
 	"signin-title": `Вход в учетную запись`,
 	"signup-title": `Регистрация учетной записи`,
 	"signin": `Войти`,
@@ -57,6 +68,7 @@ export default {
 	'userProfile': `Профиль пользователя`,
 	'userName': `Имя пользователя`,
 	'role': `Роль`,
+	'ActiveState': `Активация`,
 
 	// Музыка
 	'MusikAlreadyExists': `Музыкальный файл уже был зыгружен`,
@@ -68,7 +80,31 @@ export default {
 	"email-failed": `Неправильный адрес эл. почты`,
 
 	// Ответы сервера
-	"UserNotFound": `Пользователь не найден`,
-	"EmailAlwaysExists": `Пользователь с таким email уже зарегестрирован`,
-	"BadUserPassword": `Неправильный пароль`,
+	'UserNotFound': `Пользователь не найден`,
+	'EmailAlwaysExists': `Пользователь с таким email уже зарегестрирован`,
+	'BadUserPassword': `Неправильный пароль`,
+	'MusikNotFound': `Программа не найдена`,
+	'LastDiagnosticNotFound': `Нет данных диагностики`,
+
+	// Загрузка файлов
+	'DeleteDownloadedFiles': `Удалить загруженные файлы`,
+	'ClearFiles': `Очистить`,
+	'UploadingFile': `Загрузка файла`,
+	'SelectFile': `Выбрать файл`,
+	'UploadFile': `Загрузить файл`,
+	'AbortUpload': `Отмена загрузки`,
+
+	// Таблицы
+	'RowsPerPage': `Строк на странице`,
+	'NoData': `Нет данных`,
+
+	// Aquadoctor
+	'AquadoctorEdit': `Редактирование заказа Aquadoctor`,
+	'color1': `Верхний цвет`,
+	'color2': `Средний цвет`,
+	'color3': `Нижний цвет`,
+	'upTime': `Время набора`,
+	'constTime': `Время задержки`,
+	'downTime': `Время затухания`,
+	'speed': `Скорость`,
 }

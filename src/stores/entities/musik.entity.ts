@@ -3,6 +3,7 @@ export class Musik {
   name?: string;
   path?: string;
   description?: string;
+  created?: number;
 }
 
 export type Musiks = Musik[];

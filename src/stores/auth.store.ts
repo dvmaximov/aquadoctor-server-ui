@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { User } from 'src/stores/entities/users.entity';
 import apiService from 'src/services/api.service';
 import eventBus, { EventType } from 'src/services/event.bus';
@@ -11,25 +12,29 @@ export interface AdminLink {
   link: string;
 }
 
-let event_bus;
-
 export const useAuthStore = defineStore('auth', {
   state: () => {
     const token = ref<string>('');
     const user = ref<User | null>(null);
     const links = ref<AdminLink[]>([]);
-    event_bus: eventBus.getData().subscribe((event) => {
+    const loading = ref(false);
+
+    const router = useRouter();
+    eventBus.getData().subscribe((event) => {
       if (event.type == EventType.EVENT_CLEAR_USER) {
         token.value = '';
         user.value = null;
         links.value = [];
         localStorage.setItem('token', '');
+      } else if (event.type == EventType.EVENT_REDIRECT) {
+        router.push(event.data.path);
       }
     });
     return {
       token,
       user,
       links,
+      loading,
       lang: 'en-US' as string,
       langOptions: [
         { label: 'Русский', value: 'ru' },
@@ -37,20 +42,13 @@ export const useAuthStore = defineStore('auth', {
       ],
     };
   },
-  // state: () => ({
-  //   token: '' as string,
-  //   lang: 'en-US' as string,
-  //   user: null as User | null,
-  //   links: [] as AdminLink[],
-  //   langOptions: [
-  //     { label: 'Русский', value: 'ru' },
-  //     { label: 'English', value: 'en-US' },
-  //   ],
-  // }),
   getters: {
-    isAuth: (state): boolean => state.user !== null && state.token !== '',
+    isAuth: (state): boolean => {
+      return state.user !== null && state.token !== '';
+    },
     isHasAdminLinks: (state): boolean =>
       Array.isArray(state.links) && state.links.length != 0,
+    langValue: (state) => state.lang,
   },
   actions: {
     async signUp(user: User): Promise<boolean> {
@@ -82,10 +80,16 @@ export const useAuthStore = defineStore('auth', {
       this.token = token;
       apiService.setAuth(this.token);
     },
+    clearUser(): void {
+      this.setToken('');
+      this.user = null;
+      this.links = [];
+    },
     async getToken(): Promise<string> {
+      this.loading = true;
       const token = localStorage.getItem('token');
       if (!token) {
-        this.setToken('');
+        this.clearUser();
       } else {
         this.setToken(token);
         const response = await apiService.post('auth/getAuthUser', { token });
@@ -93,8 +97,11 @@ export const useAuthStore = defineStore('auth', {
           this.links = response.data['links'];
           delete response.data['links'];
           this.user = response.data;
+        } else {
+          this.clearUser();
         }
       }
+      this.loading = false;
       return this.token;
     },
     getLang(): string {

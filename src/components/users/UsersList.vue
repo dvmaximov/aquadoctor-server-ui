@@ -2,7 +2,10 @@
   <LoadingSpinner v-if="loading" />
   <q-table
     v-else
-    :class="{ 'table-desktop': $q.screen.gt.sm }"
+    :class="{
+      'table-desktop': $q.screen.gt.sm,
+      'height-80vh': $q.screen.gt.sm,
+    }"
     flat
     bordered
     virtual-scroll
@@ -10,6 +13,8 @@
     :columns="columns"
     row-key="name"
     :rows-per-page-options="[15, 20, 25, 50, 0]"
+    :rows-per-page-label="$t('RowsPerPage')"
+    :no-data-label="$t('NoData')"
     separator="vertical"
     @row-click="rowClick"
   >
@@ -30,6 +35,15 @@
     <template v-slot:body-cell-email="props">
       <q-td :props="props" style="text-align: left">
         {{ props.row.email }}
+      </q-td>
+    </template>
+
+    <template v-slot:body-cell-active="props">
+      <q-td :props="props" style="text-align: center; width: 5%">
+        <!-- <div class="q-pa-md">
+          <q-checkbox v-model="props.row.active" />
+        </div> -->
+        {{ props.row.active ? $t('Yes') : $t('No') }}
       </q-td>
     </template>
 
@@ -140,15 +154,6 @@ import { useRouter } from 'vue-router';
 import LoadingSpinner from 'src/components/LoadingSpinner.vue';
 
 const columns = [
-  // {
-  //   name: 'category',
-  //   required: true,
-  //   label: 'Категория',
-  //   align: 'left',
-  //   field: (row: User) => row.category,
-  //   format: (val: string) => `${val}`,
-  //   sortable: false,
-  // },
   {
     name: 'email',
     required: true,
@@ -176,6 +181,15 @@ const columns = [
     format: (val: string) => `${val}`,
     sortable: false,
   },
+  {
+    name: 'active',
+    required: true,
+    label: 'ActiveState',
+    align: 'left',
+    field: (row: User) => row.active,
+    format: (val: string) => `${val}`,
+    sortable: false,
+  },
   // {
   //   name: 'id',
   //   required: true,
@@ -199,10 +213,3 @@ const rowClick = (evt: any, row: User, index: any) => {
   router.push({ name: 'usercard', params: { userId: row.id } });
 };
 </script>
-
-<style scoped lang="scss">
-.table-desktop {
-  width: 80%;
-  margin: 0 auto;
-}
-</style>

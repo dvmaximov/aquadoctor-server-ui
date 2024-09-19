@@ -26,21 +26,27 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/admin/UsersPage.vue'),
       },
       {
-        path: '/aquadoctor',
+        path: '/musik',
         meta: { disableDrawer: false },
-        component: () => import('pages/admin/AquadoctorPage.vue'),
+        component: () => import('pages/admin/MusikPage.vue'),
       },
       {
-        path: '/aquadoctoredit/:id',
+        path: '/musikedit/:id',
+        name: 'musikedit',
+        meta: { disableDrawer: false },
+        component: () => import('pages/admin/MusikEditPage.vue'),
+      },
+      {
+        path: '/aquadoctororder',
         name: 'aquadoctoredit',
         meta: { disableDrawer: false },
-        component: () => import('pages/admin/AquadoctorEditPage.vue'),
+        component: () => import('pages/AquadoctorOrderPage.vue'),
       },
-      {
-        path: '/breathing',
-        meta: { disableDrawer: false },
-        component: () => import('pages/admin/BreathingPage.vue'),
-      },
+      // {
+      //   path: '/breathing',
+      //   meta: { disableDrawer: false },
+      //   component: () => import('pages/admin/BreathingPage.vue'),
+      // },
       {
         path: '/profile',
         meta: { disableDrawer: false },
@@ -74,9 +80,20 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/OrderedAquadoctorPage.vue'),
       },
       {
-        path: '/orderedBreathing',
+        path: '/AquadoctorEdit/:orderId',
+        name: 'AquadoctorEdit',
         meta: { disableDrawer: false },
-        component: () => import('pages/OrderedBreathingPage.vue'),
+        component: () => import('pages/admin/AquadoctorEditPage.vue'),
+      },
+      {
+        path: '/breathingorder',
+        meta: { disableDrawer: false },
+        component: () => import('pages/BreathingOrderPage.vue'),
+      },
+      {
+        path: '/download',
+        meta: { disableDrawer: false },
+        component: () => import('pages/DownloadPage.vue'),
       },
       // Always leave this as last one,
       // but you can also remove it

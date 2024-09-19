@@ -1,68 +1,77 @@
 <template>
-  <q-form class="q-mt-xl" @submit.prevent.stop="submit">
-    <div class="row input items-center">
-      <q-select
-        class="select"
-        v-model="locale"
-        :options="langOptions"
-        dense
-        outlined
-        emit-value
-        map-options
-        options-dense
-        item-aligned
-      />
-      <q-btn
-        class="q-ml-sm"
-        outline
-        color="primary"
-        :label="$t('delete')"
-        @click="confirmRemove"
-      />
-      <q-btn
-        :disable="!modified"
-        class="q-ml-sm"
-        outline
-        color="primary"
-        :label="$t('save')"
-        @click="submit"
-      />
-    </div>
-    <div class="row input">
-      <q-input
-        class="col-7"
-        :class="{ 'col-12': $q.screen.lt.md }"
-        outlined
-        v-model="musikEdit!.name"
-        :label="$t('name') + ' *'"
-        @update:model-value="modified = true"
-        :rules="[
+  <q-page class="q-mx-md q-my-sm">
+    <q-form
+      class="q-mt-xl"
+      :class="{
+        'table-desktop': $q.screen.gt.sm,
+        'height-80vh': $q.screen.gt.sm,
+      }"
+      @submit.prevent.stop="submit"
+    >
+      <div class="row input items-center">
+        <q-select
+          class="select"
+          v-model="locale"
+          :options="langOptions"
+          dense
+          outlined
+          emit-value
+          map-options
+          options-dense
+          item-aligned
+        />
+        <q-btn
+          class="q-ml-sm"
+          outline
+          color="primary"
+          :label="$t('delete')"
+          @click="confirmRemove"
+        />
+        <q-btn
+          :disable="!modified"
+          class="q-ml-sm"
+          outline
+          color="primary"
+          :label="$t('save')"
+          @click="submit"
+        />
+      </div>
+      <div class="row input">
+        <q-input
+          class="col-10"
+          :class="{ 'col-12': $q.screen.lt.md }"
+          outlined
+          v-model="musikEdit!.name"
+          :label="$t('name') + ' *'"
+          @update:model-value="modified = true"
+          :rules="[
             (val: string) => !!val || $t('required'),
           ]"
-      ></q-input>
-    </div>
-    <div class="row input">
-      <q-input
-        class="col-7"
-        :class="{ 'col-12': $q.screen.lt.md }"
-        v-model="description[`${locale}`]"
-        :label="$t('description') + ` (${locale})`"
-        filled
-        type="textarea"
-        rows="10"
-        @update:model-value="modified = true"
-      />
-    </div>
-    <figure class="row q-mt-xl">
-      <figcaption class="q-ma-sm text-primary text-bold q-mb-xl"></figcaption>
-      <audio
-        controls
-        :src="`${musikUrl}/${musikEdit?.path}`"
-        class="col-7"
-        :class="{ 'col-12': $q.screen.lt.md }"
-      ></audio>
-    </figure>
-  </q-form>
+        ></q-input>
+      </div>
+      <div class="row input">
+        <q-input
+          class="col-10"
+          :class="{ 'col-12': $q.screen.lt.md }"
+          v-model="description[`${locale}`]"
+          :label="$t('description') + ` (${locale})`"
+          filled
+          type="textarea"
+          rows="10"
+          @update:model-value="modified = true"
+        />
+      </div>
+      <figure class="row q-mt-xl">
+        <figcaption class="q-ma-sm text-primary text-bold q-mb-xl"></figcaption>
+        <audio
+          controls
+          :src="`${musikUrl}/${musikEdit?.path}`"
+          class="col-10"
+          :class="{ 'col-12': $q.screen.lt.md }"
+        ></audio>
+      </figure>
+    </q-form>
+  </q-page>
 
   <ConfirmDialog
     ref="confirmDelete"
@@ -94,7 +103,6 @@ const modified = ref(false);
 const { langOptions } = storeToRefs(authStore);
 
 const locale = ref<string>(authStore.getLang());
-
 const description = ref(
   JSON.parse(musikEdit.value!.description || '') || { ru: '' }
 );
