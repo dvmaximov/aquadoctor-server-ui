@@ -48,7 +48,7 @@
       <q-tr v-show="props.expand" :props="props">
         <q-td>
           <q-card>
-            <q-card-section style="white-space: wrap">
+            <q-card-section>
               {{ JSON.parse(props.row.description)[langValue] || '' }}
             </q-card-section>
             <q-card-actions>

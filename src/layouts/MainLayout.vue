@@ -18,7 +18,10 @@
           ><q-toolbar-title> Fatigueindex </q-toolbar-title></router-link
         >
 
-        <div class="flex justify-between">
+        <div
+          class="flex justify-between"
+          :class="{ 'full-width': $q.screen.lt.md }"
+        >
           <SignLinks />
           <LangChoice class="sm-hide xs-hide" />
         </div>
@@ -155,7 +158,12 @@ authStore.getToken();
 watch(
   () => route.path,
   () => {
-    leftDrawerOpen.value = !route.meta.disableDrawer as boolean;
+    if ($q.screen.lt.md) {
+      leftDrawerOpen.value = false;
+    } else {
+      leftDrawerOpen.value = !route.meta.disableDrawer as boolean;
+    }
+
     disableDrawer.value = route.meta.disableDrawer as boolean;
   }
 );

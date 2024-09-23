@@ -4,8 +4,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  white-space: wrap;
 }
 
+:root {
+  --factor: calc(1vw + 1vh);
+  --slogan-gap: calc(var(--factor) * 10);
+}
+
+@import './fonts.scss';
+@import './ui/panel.scss';
+@import './quasar/drawer';
+@import './quasar/field';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: outfit-r;
+}
 body.body--dark {
   background-image: linear-gradient(
     -47deg,
@@ -13,12 +32,15 @@ body.body--dark {
     darken($dark-page, 15) 100%
   );
   color: $text;
-  // border-color: $light-border;
+  font-family: raleway-r;
+  // font-size: calc(var(--factor));
+  font-size: 1rem;
+  overflow-x: hidden;
 }
 
-@import './ui/panel.scss';
-@import './quasar/drawer';
-@import './quasar/field';
+.container {
+  padding: 0 7vw;
+}
 
 .min-height-87vh {
   min-height: 87vh;

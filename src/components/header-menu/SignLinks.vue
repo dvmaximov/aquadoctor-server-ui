@@ -1,5 +1,11 @@
 <template>
-  <div v-if="!isAuth" class="flex justify-between items-center q-mr-lg">
+  <div
+    v-if="!isAuth"
+    class="flex justify-between items-center q-mr-lg"
+    :class="{
+      'justify-around': $q.screen.lt.md,
+    }"
+  >
     <router-link
       class="q-mr-md link"
       v-for="link of linkList"
@@ -8,10 +14,16 @@
       >{{ $t(`${link.label}`) }}</router-link
     >
   </div>
-  <div v-else class="flex justify-between items-center q-mr-lg">
+  <div
+    v-else
+    class="flex justify-between items-center q-mr-lg"
+    :class="{
+      'justify-around': $q.screen.lt.md,
+    }"
+  >
     <div class="q-mr-md">
       <router-link class="q-mr-md link" :to="`/profile`">{{
-        `${user!.firstName} ${user!.lastName}`
+        `${user!.lastName}`
       }}</router-link>
     </div>
     <div @click="signOut" class="q-mr-md link">{{ $t('signout') }}</div>
@@ -48,7 +60,7 @@ const signOut = () => {
   transition: all 0.5s;
   color: $text;
   cursor: pointer;
-  font-weight: bold;
+  // font-weight: bold;
   text-decoration: none;
 
   &:hover {

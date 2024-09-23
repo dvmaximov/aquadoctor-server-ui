@@ -1,9 +1,9 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    {{ $t('failed') }}
-  </q-page>
+  <section class="container">
+    <HomeComp />
+  </section>
 </template>
 
 <script setup lang="ts">
-// import {  ref } from 'vue';
+import HomeComp from 'src/components/HomeComp.vue';
 </script>
