@@ -110,13 +110,24 @@ export default {
 
 	// Слоганы главной страницы
 	'sloganTitle1': `Lorem ipsum dolor sit.`,
+	'sloganTitle2': `Lorem ipsum dolor sit.`,
+	'sloganTitle3': `Lorem ipsum dolor sit.`,
 	'slogan1': `          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint amet
           tempora asperiores placeat aliquid in consectetur dignissimos natus,
           ad voluptate numquam harum expedita, ducimus ipsa cumque! Ratione
           nihil voluptatem, unde in consectetur illo officiis ad consequuntur
           voluptatum temporibus similique, ipsum accusantium impedit recusandae
           quasi quaerat porro a quidem quam aut?`,
-	// 'slogan2': ``, // no phrase provided - fallback to default
-	// 'slogan3': ``, // no phrase provided - fallback to default
-
+	'slogan2': `          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint amet
+          tempora asperiores placeat aliquid in consectetur dignissimos natus,
+          ad voluptate numquam harum expedita, ducimus ipsa cumque! Ratione
+          nihil voluptatem, unde in consectetur illo officiis ad consequuntur
+          voluptatum temporibus similique, ipsum accusantium impedit recusandae
+          quasi quaerat porro a quidem quam aut?`,
+	'slogan3': `          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint amet
+          tempora asperiores placeat aliquid in consectetur dignissimos natus,
+          ad voluptate numquam harum expedita, ducimus ipsa cumque! Ratione
+          nihil voluptatem, unde in consectetur illo officiis ad consequuntur
+          voluptatum temporibus similique, ipsum accusantium impedit recusandae
+          quasi quaerat porro a quidem quam aut?`,
 }

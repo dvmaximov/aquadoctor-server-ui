@@ -1,8 +1,10 @@
 @font-face {
   font-family: raleway-r;
-  src: url(fonts/raleway/Raleway-Regular.woff);
+  src: url(/public/fonts/raleway/Raleway-Regular.woff2)
+    url(/public/fonts/raleway/Raleway-Regular.woff);
 }
 @font-face {
   font-family: outfit-r;
-  src: url(fonts/outfit/Outfit-Regular.woff);
+  src: url(fonts/outfit/Outfit-Regular.woff2)
+    url(fonts/outfit/Outfit-Regular.woff);
 }
