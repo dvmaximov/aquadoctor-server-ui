@@ -8,9 +8,13 @@ export enum RedirectCode {
   AQUADOCTOR_LIST,
 }
 
-export class RedirectConstants {
-  static AQUADOCTOR_LIST = '/musik';
-}
+export const RedirectConstants = {
+  [RedirectCode.AQUADOCTOR_LIST]: '/musik',
+};
+
+// export class RedirectConstants {
+//   static AQUADOCTOR_LIST = '/musik';
+// }
 
 if (process.env.DEV) {
   host = `${location.protocol}//${location.hostname}:8882`;
@@ -23,7 +27,8 @@ export class CommonResponse {
   error = false;
   errorCode = 0;
   errorMessage = '';
-  data?: any;
+  message = '';
+  data?: any = {};
 }
 
 class ApiService {
@@ -45,7 +50,7 @@ class ApiService {
     } else if (statusCode === RedirectCode.AQUADOCTOR_LIST) {
       event_bus.sendData({
         type: EventType.EVENT_REDIRECT, // signal to auth.store
-        data: { path: RedirectConstants.AQUADOCTOR_LIST },
+        data: { path: RedirectConstants[statusCode] },
       });
     }
   }
@@ -57,7 +62,7 @@ class ApiService {
 
     if (statusCode === 400) {
       event_bus.sendData({
-        type: EventType.EVENT_MESSAGE_ERROR, // signal to auth.store
+        type: EventType.EVENT_MESSAGE_ERROR, // signal to message.store
         data: { message: data.message },
       });
     }
@@ -72,44 +77,58 @@ class ApiService {
     return res;
   }
 
-  async find(path: string) {
+  private handleSuccess(response: any): CommonResponse {
+    const { message, data } = response.data;
+    if (message !== '') {
+      event_bus.sendData({
+        type: EventType.EVENT_MESSAGE_SUCCESS, // signal to message.store
+        data: { message },
+      });
+    }
+
+    const res = new CommonResponse();
+
+    res.error = false;
+    res.message = message;
+    res.data = data;
+
+    return res;
+  }
+
+  async find(path: string): Promise<CommonResponse> {
     try {
       const response = await axios.get(`${host}/api/${path}`);
-      const res = new CommonResponse();
-      res.data = response.data;
+      const res = this.handleSuccess(response);
       return res;
     } catch (err: any) {
       return this.handleError(err);
     }
   }
 
-  async findById(path: string, id: number) {
+  async findById(path: string, id: number): Promise<CommonResponse> {
     try {
       const response = await axios.get(`${host}/api/${path}/${id}`);
-      const res = new CommonResponse();
-      res.data = response.data;
+      const res = this.handleSuccess(response);
       return res;
     } catch (err: any) {
       return this.handleError(err);
     }
   }
 
-  async findByName(path: string, name: string): Promise<unknown> {
+  async findByName(path: string, name: string): Promise<CommonResponse> {
     try {
       const response = await axios.get(`${host}/api/${path}/${name}`);
-      const res = new CommonResponse();
-      res.data = response.data;
+      const res = this.handleSuccess(response);
       return res;
     } catch (err: any) {
       return this.handleError(err);
     }
   }
 
-  async insert(path: string, record: unknown = {}): Promise<any> {
+  async insert(path: string, record: unknown = {}): Promise<CommonResponse> {
     try {
       const response = await axios.post(`${host}/api/${path}/insert`, record);
-      const res = new CommonResponse();
-      res.data = response.data;
+      const res = this.handleSuccess(response);
       return res;
     } catch (err) {
       return this.handleError(err);
@@ -119,22 +138,31 @@ class ApiService {
   async post(path: string, record: unknown = {}): Promise<CommonResponse> {
     try {
       const response = await axios.post(`${host}/api/${path}`, record);
-      const res = new CommonResponse();
-      res.data = response.data;
+      const res = this.handleSuccess(response);
       return res;
     } catch (err) {
       return this.handleError(err);
     }
   }
 
-  async delete(path: string, id: number): Promise<unknown> {
-    const res = await axios.delete(`${host}/api/${path}/remove/${id}`);
-    return res.data;
+  async delete(path: string, id: number): Promise<CommonResponse> {
+    try {
+      const response = await axios.delete(`${host}/api/${path}/remove/${id}`);
+      const res = this.handleSuccess(response);
+      return res;
+    } catch (err) {
+      return this.handleError(err);
+    }
   }
 
-  async update(path: string, value: unknown): Promise<unknown> {
-    const res = await axios.put(`${host}/api/${path}/update`, value);
-    return res.data;
+  async update(path: string, value: unknown): Promise<CommonResponse> {
+    try {
+      const response = await axios.put(`${host}/api/${path}/update`, value);
+      const res = this.handleSuccess(response);
+      return res;
+    } catch (err) {
+      return this.handleError(err);
+    }
   }
 }
 

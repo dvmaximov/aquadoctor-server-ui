@@ -85,6 +85,10 @@ export default {
 	'BadUserPassword': `Неправильный пароль`,
 	'MusikNotFound': `Программа не найдена`,
 	'LastDiagnosticNotFound': `Нет данных диагностики`,
+	'successUserDelete': `Пользователь успешно удален`,
+	'aquadoctorAdded': `Программа Aquadoctor добавлена`,
+	'aquadoctorDeleted': `Программа Aquadoctor удалена`,
+	'LastDiagnosticAlreadyUsed': `Данные последней диагностики уже использованы`,
 
 	// Загрузка файлов
 	'DeleteDownloadedFiles': `Удалить загруженные файлы`,
@@ -98,7 +102,7 @@ export default {
 	'RowsPerPage': `Строк на странице`,
 	'NoData': `Нет данных`,
 
-	// Aquadoctor
+	// Заказы
 	'AquadoctorEdit': `Редактирование заказа Aquadoctor`,
 	'color1': `Верхний цвет`,
 	'color2': `Средний цвет`,

@@ -82,6 +82,10 @@ Key,"Русский, ru","English, en-US"
 'BadUserPassword',"Неправильный пароль","Wrong password"
 'MusikNotFound',"Программа не найдена","Program not found"
 'LastDiagnosticNotFound',"Нет данных диагностики","No diagnostic data"
+'successUserDelete',"Пользователь успешно удален","User successfully deleted"
+'aquadoctorAdded',"Программа Aquadoctor добавлена","Aquadoctor programm added"
+'aquadoctorDeleted',"Программа Aquadoctor удалена","Aquadoctor programm deleted"
+'LastDiagnosticAlreadyUsed',"Данные последней диагностики уже использованы","The latest diagnostic data has already been used"
 ,,
 #Загрузка файлов
 'DeleteDownloadedFiles',"Удалить загруженные файлы","Delete downloaded files"
@@ -95,7 +99,7 @@ Key,"Русский, ru","English, en-US"
 'RowsPerPage',"Строк на странице","Rows per page"
 'NoData',"Нет данных","No data"
 ,,
-#Aquadoctor
+#Заказы
 'AquadoctorEdit',"Редактирование заказа Aquadoctor","Aquadoctor order edit"
 'color1',"Верхний цвет","Top color"
 'color2',"Средний цвет","Medium color"

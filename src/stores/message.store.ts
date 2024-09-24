@@ -9,6 +9,7 @@ export const useMessageStore = defineStore('message', {
     const { t } = useI18n();
 
     eventBus.getData().subscribe((event) => {
+      if (!event.data.message && event.data.message == '') return;
       if (event.type == EventType.EVENT_MESSAGE_ERROR) {
         q.notify({
           type: 'negative',

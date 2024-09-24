@@ -66,6 +66,7 @@ export const useAuthStore = defineStore('auth', {
         email,
         password,
       });
+
       if (!response.error && response.data) {
         this.user = response.data.user;
         this.links = response.data.links;

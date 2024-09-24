@@ -37,6 +37,7 @@ export const useMusikStore = defineStore('musik', {
     async load(): Promise<void> {
       this.loading = true;
       const response = await apiService.find(`musik`);
+
       if (!response.error) {
         this.musiks = response.data;
       }

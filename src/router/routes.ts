@@ -86,6 +86,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/admin/AquadoctorEditPage.vue'),
       },
       {
+        path: '/orderedBreathing',
+        meta: { disableDrawer: false },
+        component: () => import('pages/OrderedBreathingPage.vue'),
+      },
+      {
         path: '/breathingorder',
         meta: { disableDrawer: false },
         component: () => import('pages/BreathingOrderPage.vue'),

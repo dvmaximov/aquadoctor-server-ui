@@ -178,13 +178,13 @@ const searchByName = ref('');
 
 const uploaded = async (e: { files: unknown; xhr: XMLHttpRequest }) => {
   await musikStore.load();
-  messageStore.success(t(e.xhr.responseText));
+  messageStore.success('MusikAdded');
 };
 
 const failed = async (e: { files: unknown; xhr: XMLHttpRequest }) => {
   const response = JSON.parse(e.xhr.responseText);
   apiService.redirect(response['statusCode']);
-  messageStore.error(t(response['message']));
+  // messageStore.error(t(response['message']));
 };
 
 const { apiUrl } = storeToRefs(musikStore);
