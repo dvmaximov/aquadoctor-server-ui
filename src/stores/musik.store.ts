@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import apiService from 'src/services/api.service';
+import apiService, { RedirectCode } from 'src/services/api.service';
 import { Musik } from './entities/musik.entity';
 
 export const useMusikStore = defineStore('musik', {
@@ -56,8 +56,8 @@ export const useMusikStore = defineStore('musik', {
     },
     async delete(id: number | undefined) {
       if (!id) return;
-      const response = await apiService.delete('musik', id);
-      console.log(response);
+      apiService.delete('musik', id);
+      apiService.redirect(RedirectCode.AQUADOCTOR_LIST);
     },
     getMusikById(id: number): Musik | null {
       const musik = this.musiks.find((item: Musik) => item.id === id);

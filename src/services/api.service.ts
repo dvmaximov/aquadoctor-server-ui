@@ -2,8 +2,15 @@ import axios, { AxiosError } from 'axios';
 import eventBus, { EventType } from 'src/services/event.bus';
 
 let host: string;
-
 const event_bus = eventBus;
+
+export enum RedirectCode {
+  AQUADOCTOR_LIST,
+}
+
+export class RedirectConstants {
+  static AQUADOCTOR_LIST = '/musik';
+}
 
 if (process.env.DEV) {
   host = `${location.protocol}//${location.hostname}:8882`;
@@ -23,7 +30,7 @@ class ApiService {
   setAuth(token: string) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   }
-  public redirect(statusCode: number, message = ''): void {
+  public redirect(statusCode: number): void {
     if (statusCode === 401) {
       event_bus.sendData({ type: EventType.EVENT_CLEAR_USER, data: {} });
       event_bus.sendData({
@@ -34,6 +41,11 @@ class ApiService {
       event_bus.sendData({
         type: EventType.EVENT_REDIRECT, // signal to auth.store
         data: { path: '/forbidden' },
+      });
+    } else if (statusCode === RedirectCode.AQUADOCTOR_LIST) {
+      event_bus.sendData({
+        type: EventType.EVENT_REDIRECT, // signal to auth.store
+        data: { path: RedirectConstants.AQUADOCTOR_LIST },
       });
     }
   }

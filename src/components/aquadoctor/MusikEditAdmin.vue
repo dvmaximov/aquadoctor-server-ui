@@ -84,7 +84,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { useMusikStore } from 'src/stores/musik.store';
 import { useAuthStore } from 'src/stores/auth.store';
@@ -95,7 +95,6 @@ const musikStore = useMusikStore();
 const authStore = useAuthStore();
 const { musikUrl } = storeToRefs(musikStore);
 const route = useRoute();
-const router = useRouter();
 const confirmDelete = ref();
 const $q = useQuasar();
 const musikEdit = ref<Musik | null>(musikStore.getMusikById(+route.params.id));
@@ -133,7 +132,7 @@ const confirmRemove = () => {
 const handleOk = async () => {
   confirmDelete.value.isShow = false;
   await musikStore.delete(musikEdit.value?.id);
-  router.push('/aquadoctor');
+  // router.push('/aquadoctor');
 };
 </script>
 
