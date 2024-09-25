@@ -88,6 +88,7 @@ export default {
 	'successUserDelete': `Пользователь успешно удален`,
 	'aquadoctorAdded': `Программа Aquadoctor добавлена`,
 	'aquadoctorDeleted': `Программа Aquadoctor удалена`,
+	'AquadoctorUpdated': `Программа Aquadoctor обновлена`,
 	'LastDiagnosticAlreadyUsed': `Данные последней диагностики уже использованы`,
 
 	// Загрузка файлов
@@ -111,6 +112,7 @@ export default {
 	'constTime': `Время задержки`,
 	'downTime': `Время затухания`,
 	'speed': `Скорость`,
+	'active': `Активно`,
 
 	// Слоганы главной страницы
 	'sloganTitle1': `Далеко-далеко за словесными горами.`,

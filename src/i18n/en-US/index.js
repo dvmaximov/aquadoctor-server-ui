@@ -88,6 +88,7 @@ export default {
 	'successUserDelete': `User successfully deleted`,
 	'aquadoctorAdded': `Aquadoctor programm added`,
 	'aquadoctorDeleted': `Aquadoctor programm deleted`,
+	'AquadoctorUpdated': `Aquadoctor programm updated`,
 	'LastDiagnosticAlreadyUsed': `The latest diagnostic data has already been used`,
 
 	// Загрузка файлов
@@ -111,6 +112,7 @@ export default {
 	'constTime': `Delay time`,
 	'downTime': `Decay time`,
 	'speed': `Speed`,
+	'active': `Active`,
 
 	// Слоганы главной страницы
 	'sloganTitle1': `Lorem ipsum dolor sit.`,

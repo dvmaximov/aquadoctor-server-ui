@@ -85,6 +85,7 @@ Key,"Русский, ru","English, en-US"
 'successUserDelete',"Пользователь успешно удален","User successfully deleted"
 'aquadoctorAdded',"Программа Aquadoctor добавлена","Aquadoctor programm added"
 'aquadoctorDeleted',"Программа Aquadoctor удалена","Aquadoctor programm deleted"
+'AquadoctorUpdated',"Программа Aquadoctor обновлена","Aquadoctor programm updated"
 'LastDiagnosticAlreadyUsed',"Данные последней диагностики уже использованы","The latest diagnostic data has already been used"
 ,,
 #Загрузка файлов
@@ -108,6 +109,7 @@ Key,"Русский, ru","English, en-US"
 'constTime',"Время задержки","Delay time"
 'downTime',"Время затухания","Decay time"
 'speed',"Скорость","Speed"
+'active',"Активно","Active"
 ,,
 #Слоганы главной страницы
 'sloganTitle1',"Далеко-далеко за словесными горами.","Lorem ipsum dolor sit."

@@ -1,5 +1,6 @@
 <template>
-  <div class="row">
+  <LoadingSpinner v-if="!ready" />
+  <div v-else class="row">
     <section class="q-mx-md q-my-lg col-11 min-height-87vh">
       <q-card class="full-height">
         <q-tabs
@@ -49,10 +50,17 @@ import UserProfile from 'src/components/users/UserProfile.vue';
 import DiagnosticList from 'src/components/diagnostic/DiagnosticList.vue';
 import AquadoctorOrders from 'src/components/aquadoctor/AquadoctorOrders.vue';
 import BreathingOrder from 'src/components/breathing/BreathingOrder.vue';
+import LoadingSpinner from 'src/components/LoadingSpinner.vue';
+import { useUsersStore } from 'src/stores/users.store';
 
+const userStore = useUsersStore();
+const ready = ref(false);
 const route = useRoute();
 const userId = +route.params.userId;
 const tab = ref('profile');
-// const innerTab = ref('innerMails');
-// const splitterModel = ref(20);
+
+userStore.load().then(() => {
+  ready.value = true;
+  console.log(ready.value);
+});
 </script>

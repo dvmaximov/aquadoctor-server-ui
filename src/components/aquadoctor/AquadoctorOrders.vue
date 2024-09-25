@@ -141,7 +141,7 @@ const columns = [
   {
     name: 'active',
     required: true,
-    label: 'ActiveState',
+    label: 'active',
     align: 'left',
     field: (row: Aquadoctor) => row.active,
     format: (val: string) => `${val}`,
