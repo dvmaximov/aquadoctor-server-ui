@@ -86,10 +86,11 @@ export default {
 	'MusikNotFound': `Program not found`,
 	'LastDiagnosticNotFound': `No diagnostic data`,
 	'successUserDelete': `User successfully deleted`,
-	'aquadoctorAdded': `Aquadoctor programm added`,
-	'aquadoctorDeleted': `Aquadoctor programm deleted`,
+	'AquadoctorAdded': `Aquadoctor programm added`,
+	'AquadoctorDeleted': `Aquadoctor programm deleted`,
 	'AquadoctorUpdated': `Aquadoctor programm updated`,
 	'LastDiagnosticAlreadyUsed': `The latest diagnostic data has already been used`,
+	'DiagnosticDeleted': `The selected diagnostics have been removed.`,
 
 	// Загрузка файлов
 	'DeleteDownloadedFiles': `Delete downloaded files`,

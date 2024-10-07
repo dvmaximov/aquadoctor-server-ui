@@ -61,6 +61,5 @@ const tab = ref('profile');
 
 userStore.load().then(() => {
   ready.value = true;
-  console.log(ready.value);
 });
 </script>

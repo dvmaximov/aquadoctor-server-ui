@@ -23,5 +23,9 @@ export const useDiagnosticStore = defineStore('diagnostic', {
         this.diagnostics.push(response.data);
       }
     },
+    async delete(id: number | undefined) {
+      if (!id) return;
+      const response = await apiService.delete('diagnostics', id);
+    },
   },
 });

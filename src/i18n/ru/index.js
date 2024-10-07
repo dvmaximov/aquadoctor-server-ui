@@ -86,10 +86,11 @@ export default {
 	'MusikNotFound': `Программа не найдена`,
 	'LastDiagnosticNotFound': `Нет данных диагностики`,
 	'successUserDelete': `Пользователь успешно удален`,
-	'aquadoctorAdded': `Программа Aquadoctor добавлена`,
-	'aquadoctorDeleted': `Программа Aquadoctor удалена`,
+	'AquadoctorAdded': `Программа Aquadoctor добавлена`,
+	'AquadoctorDeleted': `Программа Aquadoctor удалена`,
 	'AquadoctorUpdated': `Программа Aquadoctor обновлена`,
 	'LastDiagnosticAlreadyUsed': `Данные последней диагностики уже использованы`,
+	'DiagnosticDeleted': `Выбранная диагностика удалена`,
 
 	// Загрузка файлов
 	'DeleteDownloadedFiles': `Удалить загруженные файлы`,

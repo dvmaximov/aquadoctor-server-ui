@@ -83,10 +83,11 @@ Key,"Русский, ru","English, en-US"
 'MusikNotFound',"Программа не найдена","Program not found"
 'LastDiagnosticNotFound',"Нет данных диагностики","No diagnostic data"
 'successUserDelete',"Пользователь успешно удален","User successfully deleted"
-'aquadoctorAdded',"Программа Aquadoctor добавлена","Aquadoctor programm added"
-'aquadoctorDeleted',"Программа Aquadoctor удалена","Aquadoctor programm deleted"
+'AquadoctorAdded',"Программа Aquadoctor добавлена","Aquadoctor programm added"
+'AquadoctorDeleted',"Программа Aquadoctor удалена","Aquadoctor programm deleted"
 'AquadoctorUpdated',"Программа Aquadoctor обновлена","Aquadoctor programm updated"
 'LastDiagnosticAlreadyUsed',"Данные последней диагностики уже использованы","The latest diagnostic data has already been used"
+'DiagnosticDeleted',"Выбранная диагностика удалена","The selected diagnostics have been removed."
 ,,
 #Загрузка файлов
 'DeleteDownloadedFiles',"Удалить загруженные файлы","Delete downloaded files"

@@ -1,6 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <LoadingSpinner v-if="loading" />
+    <div
+      v-if="loading"
+      class="flex items-center justify-center min-height-100vh min-width-100vw"
+    >
+      <LoadingSpinner />
+    </div>
+
     <div v-else>
       <header class="flex items-center justify-between fixed-top header">
         <q-btn

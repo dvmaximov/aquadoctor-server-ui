@@ -13,6 +13,7 @@
     :columns="columns"
     row-key="name"
     :rows-per-page-options="[15, 20, 25, 50, 0]"
+    separator="horizontal"
   >
     <template v-slot:header="props">
       <q-tr :props="props">
@@ -21,7 +22,7 @@
           :key="col.name"
           :props="props"
           class="text-uppercase text-primary"
-          style="text-align: left"
+          :class="{ right: col.name === 'id' }"
         >
           {{ $t(col.label) }}
         </q-th>
@@ -30,18 +31,65 @@
 
     <template v-slot:body-cell-created="props">
       <q-td :props="props" style="text-align: left">
-        {{ formatDate(props.row.created, 'YYYY-MM-DD') }}
+        {{ formatDate(props.row.created, 'YYYY-MM-DD:HH-MM a') }}
+      </q-td>
+    </template>
+
+    <template v-slot:body-cell-id="props">
+      <q-td :props="props">
+        <div class="row justify-end">
+          <!-- <div class="flex justify-end" v-if="correct">
+            <div class="q-gutter-xs">
+              <q-btn
+                class="q-mr-sm"
+                size="12px"
+                flat
+                dense
+                round
+                icon="edit"
+                color="primary"
+                @click.stop.capture="edit(props.row)"
+              >
+                <q-tooltip>{{ $t('edit') }}</q-tooltip>
+              </q-btn>
+            </div>
+          </div> -->
+          <div class="item-control-delete">
+            <div class="q-gutter-xs">
+              <q-btn
+                class="q-mr-sm"
+                size="12px"
+                flat
+                dense
+                round
+                icon="mdi-close-circle"
+                @click.stop.capture="confirmRemove(props.row)"
+              >
+                <q-tooltip>{{ $t('delete') }}</q-tooltip>
+              </q-btn>
+            </div>
+          </div>
+        </div>
       </q-td>
     </template>
   </q-table>
+
+  <ConfirmDialog
+    ref="confirmDelete"
+    @ok="handleOk"
+    :description="$t('deleteRecord')"
+    :message="formatDate(selectedValue?.created, 'YYYY-MM-DD:HH-MM a')"
+  />
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { date } from 'quasar';
 const { formatDate } = date;
 import { storeToRefs } from 'pinia';
 import { useDiagnosticStore } from 'src/stores/diagnostic.store';
 import { Diagnostic } from 'src/stores/entities/diagnostic.enyity';
+import ConfirmDialog from '../ConfirmDialog.vue';
 import LoadingSpinner from 'src/components/LoadingSpinner.vue';
 
 const props = defineProps<{
@@ -49,15 +97,6 @@ const props = defineProps<{
 }>();
 
 const columns = [
-  // {
-  //   name: 'id',
-  //   required: true,
-  //   label: 'Управление',
-  //   align: 'right',
-  //   field: (row: Diagnostic) => row.id,
-  //   format: (val: string) => `${val}`,
-  //   sortable: false,
-  // },
   {
     name: 'created',
     required: true,
@@ -67,9 +106,44 @@ const columns = [
     format: (val: string) => `${val}`,
     sortable: false,
   },
+  {
+    name: 'id',
+    required: true,
+    label: 'blank',
+    align: 'right',
+    field: (row: Diagnostic) => row.id,
+    format: (val: string) => `${val}`,
+    sortable: false,
+  },
 ];
 
 const store = useDiagnosticStore();
 const { diagnostics, loading } = storeToRefs(store);
+const confirmDelete = ref();
+const selectedValue = ref<Diagnostic | null>(null);
+
 store.load(props.userId);
+
+const handleOk = async () => {
+  confirmDelete.value.isShow = false;
+  await store.delete(selectedValue.value?.id);
+  await store.load(props.userId);
+};
+
+const confirmRemove = (value: Diagnostic) => {
+  selectedValue.value = value;
+  confirmDelete.value.isShow = true;
+};
 </script>
+
+<style scoped lang="scss">
+.item-control-delete {
+  color: $field-error;
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+</style>
