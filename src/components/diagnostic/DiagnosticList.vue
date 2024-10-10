@@ -31,7 +31,16 @@
 
     <template v-slot:body-cell-created="props">
       <q-td :props="props" style="text-align: left">
-        {{ formatDate(props.row.created, 'YYYY-MM-DD:HH-MM a') }}
+        {{ formatDate(+props.row.created, 'YYYY-MM-DD --- HH:MM a') }}
+      </q-td>
+    </template>
+
+    <template v-slot:body-cell-metaData="props">
+      <q-td :props="props" style="text-align: left">
+        <div class="q-mb-sm">{{ $t('metaDataAquadoctorLabel') }}</div>
+        <div v-for="(item, key) in getMetaData(props.row.metaData)" :key="key">
+          <div>{{ item }}</div>
+        </div>
       </q-td>
     </template>
 
@@ -78,7 +87,7 @@
     ref="confirmDelete"
     @ok="handleOk"
     :description="$t('deleteRecord')"
-    :message="formatDate(selectedValue?.created, 'YYYY-MM-DD:HH-MM a')"
+    :message="formatDate(selectedValue?.created, 'YYYY-MM-DD  HH-MM a')"
   />
 </template>
 
@@ -103,6 +112,15 @@ const columns = [
     label: 'created',
     align: 'left',
     field: (row: Diagnostic) => `${row.created}`,
+    format: (val: string) => `${val}`,
+    sortable: false,
+  },
+  {
+    name: 'metaData',
+    required: true,
+    label: 'blank',
+    align: 'left',
+    field: (row: Diagnostic) => row.metaData,
     format: (val: string) => `${val}`,
     sortable: false,
   },
@@ -133,6 +151,12 @@ const handleOk = async () => {
 const confirmRemove = (value: Diagnostic) => {
   selectedValue.value = value;
   confirmDelete.value.isShow = true;
+};
+
+const getMetaData = (metaData: string): any => {
+  const meta = JSON.parse(metaData);
+  if (meta['aquadoctor'] == null) return {};
+  return meta['aquadoctor'];
 };
 </script>
 

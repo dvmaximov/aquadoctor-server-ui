@@ -17,4 +17,5 @@ export class Diagnostic {
   sadMMHg = 0;
   dadMMHg = 0;
   active = true;
+  metaData = '{}';
 }

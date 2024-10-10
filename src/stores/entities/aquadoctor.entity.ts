@@ -12,4 +12,5 @@ export class Aquadoctor {
   color2?: string;
   color3?: string;
   active?: boolean;
+  metaData?: string;
 }

@@ -100,6 +100,7 @@ Key,"Русский, ru","English, en-US"
 #Таблицы
 'RowsPerPage',"Строк на странице","Rows per page"
 'NoData',"Нет данных","No data"
+'metaDataAquadoctorLabel',"ПРОГРАММЫ AQUADOCTOR","AQUADOCTOR PROGRAMS"
 ,,
 #Заказы
 'AquadoctorEdit',"Редактирование заказа Aquadoctor","Aquadoctor order edit"

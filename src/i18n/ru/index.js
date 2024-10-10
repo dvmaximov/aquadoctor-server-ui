@@ -103,6 +103,7 @@ export default {
 	// Таблицы
 	'RowsPerPage': `Строк на странице`,
 	'NoData': `Нет данных`,
+	'metaDataAquadoctorLabel': `ПРОГРАММЫ AQUADOCTOR`,
 
 	// Заказы
 	'AquadoctorEdit': `Редактирование заказа Aquadoctor`,

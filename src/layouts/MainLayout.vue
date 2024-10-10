@@ -191,6 +191,7 @@ const toggleLeftDrawer = () => {
   z-index: 1000;
   border-bottom: 1px solid #525151;
   background: var(--q-dark);
+  flex-wrap: nowrap;
 }
 .logo {
   text-decoration: none;
