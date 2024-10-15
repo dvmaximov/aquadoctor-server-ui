@@ -1,8 +1,8 @@
 <template>
   <q-page class="q-mx-md q-my-sm">
-    <h6>Отладочная версия</h6>
-    <h6>Увеличенный размер (128 Mb) из-за логирования</h6>
-    <a href="download/fatigueindex.apk" style="color: white"
+    <h6>Версия 0.8.0</h6>
+    <h6>размер (49 Mb) 15.10.2024</h6>
+    <a href="/download/fatigueindex080.apk" style="color: white"
       >fatigueindex 0.8</a
     >
   </q-page>
